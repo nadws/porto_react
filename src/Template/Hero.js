@@ -11,7 +11,7 @@ function Hero() {
         <h2 className="text-3xl font-semibold mt-4 text-[#4C5361]">
           The library for web and native user interfaces
         </h2>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-700">
+        <button class="bg-blue-500 text-white px-4 py-4 rounded-xl hover:bg-blue-700">
           Tombol Tumpul
         </button>
       </div>
