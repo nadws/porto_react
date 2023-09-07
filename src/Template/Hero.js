@@ -13,11 +13,12 @@ function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 3 }}
       >
-        <h1 className="text-4xl font-bold mb-4 text-[#23272F] ">
-          Hi, Iam Nanda
+        <h1 className=" font-extrabold text-[#404258] text-center mt-2 sm:text-4xl xs:text-4xl  font-poppins">
+          Hi, Iam NProject
         </h1>
-        <h1 className="text-4xl font-bold mb-8 text-[#CBA033]">
-          As Web Developer & UI/UX Design
+        <h1 className=" font-extrabold text-[#404258] text-center mt-2 mb-5 sm:text-4xl xs:text-4xl  font-poppins">
+          As
+          <span className="text-[#CBA033]">Web Developer & UI/UX Design</span>
         </h1>
 
         <div className="flex items-center space-x-4">
