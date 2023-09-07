@@ -11,7 +11,7 @@ function Hero() {
         className="w-max flex flex-col items-center justify-center text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 4 }}
+        transition={{ duration: 3 }}
       >
         <h1 className="text-4xl font-bold mb-4 text-[#23272F] ">
           Hi, Iam Nanda
