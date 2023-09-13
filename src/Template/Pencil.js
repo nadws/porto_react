@@ -1,33 +1,62 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect } from "react";
 
 function Pencil() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const canvasRef = useRef(null);
+  let drawing = false;
+  let lastX = 0;
+  let lastY = 0;
 
   useEffect(() => {
-    const onMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+
+    const handleMouseDown = (e) => {
+      drawing = true;
+      [lastX, lastY] = [
+        e.clientX - canvas.offsetLeft,
+        e.clientY - canvas.offsetTop,
+      ];
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    const handleMouseMove = (e) => {
+      if (!drawing) return;
+      ctx.strokeStyle = "black";
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      [lastX, lastY] = [
+        e.clientX - canvas.offsetLeft,
+        e.clientY - canvas.offsetTop,
+      ];
+      ctx.lineTo(lastX, lastY);
+      ctx.stroke();
+    };
+
+    const handleMouseUp = () => {
+      drawing = false;
+    };
+
+    canvas.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      canvas.removeEventListener("mousedown", handleMouseDown);
+      canvas.removeEventListener("mousemove", handleMouseMove);
+      canvas.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
+
   return (
-    <motion.div
-      style={{
-        width: "10px",
-        height: "200px",
-        background: "gray",
-        position: "absolute",
-        left: mousePosition.x,
-        top: mousePosition.y,
-        transformOrigin: "top",
-        transform: `rotate(-45deg)`,
-      }}
-    ></motion.div>
+    <div>
+      <canvas
+        ref={canvasRef}
+        width={800}
+        height={600}
+        className="border border-gray-300"
+      ></canvas>
+    </div>
   );
 }
 

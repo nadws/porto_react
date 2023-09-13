@@ -1,19 +1,87 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Logo from "./hero.svg";
 import Github from "../Logo/github.png";
 import Insagram from "../Logo/instagram.png";
+import Pesil from "../Logo/pencil.png";
 import { motion } from "framer-motion";
 
 function Hero() {
+  const canvasRef = useRef(null);
+  let drawing = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  // State untuk melacak apakah coretan masih aktif atau tidak
+  const [isDrawingActive, setIsDrawingActive] = useState(false);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.lineWidth = 10;
+    ctx.lineCap = "round";
+
+    const handleMouseDown = (e) => {
+      drawing = true;
+      [lastX, lastY] = [
+        e.clientX - canvas.offsetLeft,
+        e.clientY - canvas.offsetTop,
+      ];
+    };
+
+    const handleMouseMove = (e) => {
+      if (!drawing) return;
+      ctx.strokeStyle = "#CBA033";
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      [lastX, lastY] = [
+        e.clientX - canvas.offsetLeft,
+        e.clientY - canvas.offsetTop,
+      ];
+      ctx.lineTo(lastX, lastY);
+      ctx.stroke();
+    };
+
+    const handleMouseUp = () => {
+      drawing = false;
+      setIsDrawingActive(true); // Setelah coretan, atur state menjadi aktif
+      // Setelah 20 detik, atur state menjadi non-aktif dan hapus isi canvas
+      setTimeout(() => {
+        setIsDrawingActive(false);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }, 10000); // 20000 milidetik = 20 detik
+    };
+
+    canvas.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      canvas.removeEventListener("mousedown", handleMouseDown);
+      canvas.removeEventListener("mousemove", handleMouseMove);
+      canvas.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, []);
   return (
-    <div className="h-screen flex p-4 justify-center">
+    <div className="h-screen flex p-4 justify-center relative">
+      <canvas
+        ref={canvasRef}
+        width={1400}
+        height={1000}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          cursor: isDrawingActive ? `url(${Pesil}) ${Pesil}, auto` : "auto",
+        }}
+      />
       <motion.div
-        className="w-max flex flex-col items-center justify-center text-center"
+        className="w-max flex flex-col items-center justify-center text-center relative"
+        style={{ zIndex: 20 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 3 }}
       >
-        <h1 className=" font-extrabold text-[#404258] text-center mt-2 sm:text-4xl xs:text-4xl  font-poppins">
+        <h1 className=" font-extrabold text-[#404258] text-center mt-2 sm:text-4xl xs:text-4xl  font-Poppins">
           Hi, Iam NProject
         </h1>
         <h1 className=" font-extrabold text-[#404258] text-center mt-2 mb-5 sm:text-4xl xs:text-4xl  font-poppins">
