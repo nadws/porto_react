@@ -62,7 +62,7 @@ function Hero() {
     };
   }, []);
   return (
-    <div className="h-screen flex p-4 justify-center relative">
+    <div className="h-screen flex p-4 justify-center relative bg-[#0D1018]">
       <canvas
         ref={canvasRef}
         width={1400}
@@ -77,17 +77,22 @@ function Hero() {
       <motion.div
         className="w-max flex flex-col items-center justify-center text-center relative"
         style={{ zIndex: 20 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 3 }}
+        initial={{ opacity: 0, y: -100 }} // Atur opacity ke 0 dan posisi Y ke luar layar atas
+        animate={{ opacity: 1, y: 0 }} // Animasikan opacity ke 1 dan posisi Y ke 0
+        transition={{ duration: 2, delay: 0.5 }} // Atur durasi animasi dan penundaan jika diperlukan
       >
-        <h1 className=" font-extrabold text-[#404258] text-center mt-2 sm:text-4xl xs:text-4xl  font-Poppins">
+        <h1 className=" font-extrabold text-white text-center mt-2 sm:text-4xl xs:text-4xl  font-Poppins">
           Hi, Iam NProject
         </h1>
-        <h1 className=" font-extrabold text-[#404258] text-center mt-2 mb-5 sm:text-4xl xs:text-4xl  font-poppins">
+        <h1 className=" font-extrabold text-white text-center mt-2 mb-5 sm:text-4xl xs:text-4xl  font-poppins">
           As
           <span className="text-[#CBA033]">Web Developer & UI/UX Design</span>
         </h1>
+        <img
+          src="https://github.githubassets.com/images/modules/site/home-campaign/hero-drone.webp"
+          alt="Deskripsi Gambar"
+          className="w-60 h-auto absolute top-4 right-[-18rem]" // Tambahkan margin kiri negatif di sini
+        />
 
         <div className="flex items-center space-x-4">
           <a href="https://github.com/nadws" target="_blank">
