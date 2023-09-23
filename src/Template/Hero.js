@@ -62,11 +62,11 @@ function Hero() {
     };
   }, []);
   return (
-    <div className="h-screen flex p-4 justify-center relative bg-[#0D1018]">
+    <div className="h-full flex p-4 justify-center relative bg-[#0D1018]">
       <canvas
         ref={canvasRef}
         width={1400}
-        height={1000}
+        height={500}
         style={{
           position: "absolute",
           top: 0,

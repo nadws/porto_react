@@ -6,6 +6,7 @@ module.exports = {
       darkMode: "class",
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
+        Montserrat: ["Montserrat Alternates", "sans-serif"],
       },
     },
   },

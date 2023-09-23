@@ -2,7 +2,7 @@ import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
-function About() {
+function About2() {
   return (
     <div className="h-screen flex items-center justify-center bg-[#0D1018]">
       <div className="bg-[#161B22] shadow-md rounded-lg  mx-auto lg:w-10/12 ">
@@ -45,4 +45,4 @@ function About() {
   );
 }
 
-export default About;
+export default About2;
