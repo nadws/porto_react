@@ -2,5 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+.card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1));
+    border: 2px solid transparent; /* Warna awal transparan */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    border-color: #00ffff; /* Warna neon saat di-hover */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Efek "glassmorphism" saat di-hover */
+  }
+  
+  .card:hover div {
+    animation: neon 1s infinite alternate;
+  }
+  
+  @keyframes neon {
+    0% {
+      border-color: #00ffff; /* Warna awal */
+    }
+    100% {
+      border-color: #33ff33; /* Warna neon saat berkedip */
+    }
+  }
+  
+  
+  
+  
+  
+  
+
   
   

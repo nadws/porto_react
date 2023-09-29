@@ -4,10 +4,10 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 function About() {
   return (
-    <div className="h-screen flex items-center justify-center bg-[#0D1018]">
-      <div className="bg-[#161B22] shadow-md rounded-lg  mx-auto lg:w-10/12 ">
+    <div className="h-screen flex items-center justify-center bg-[#0D1018] ">
+      <div className="bg-[#161B22] shadow-md rounded-lg  mx-auto lg:w-10/12 card">
         {/* Card Header */}
-        <div className="bg-[#161B22] border border-[#30363D] text-white py-2 px-4">
+        <div className="bg-[#161B22] border border-[#30363D] text-white py-2 px-4 ">
           <h2 className="text-2xl font-semibold flex items-center">
             <BiChevronLeft className="mr-2" />
             <BiChevronRight />
@@ -35,7 +35,10 @@ function About() {
                 3 * Full stack developer since 2020
               </p>
               <p className="font-Montserrat mb-4 cursor-pointer text-[#746B6D] hover:text-white hover:bg-[#6f7975]">
-                3 * Full stack developer since 2020
+                4 * SQL/NoSQL database architecture, designing and developing
+              </p>
+              <p className="font-Montserrat mb-4 cursor-pointer text-[#746B6D] hover:text-white hover:bg-[#6f7975]">
+                5 * Very good at programming with PHP
               </p>
             </div>
           </div>
