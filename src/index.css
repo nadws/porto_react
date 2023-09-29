@@ -21,9 +21,11 @@
   @keyframes neon {
     0% {
       border-color: #00ffff; /* Warna awal */
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
     }
     100% {
       border-color: #33ff33; /* Warna neon saat berkedip */
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
     }
   }
   
