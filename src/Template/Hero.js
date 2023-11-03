@@ -114,7 +114,7 @@ function Hero() {
             className="w-30 h-30  p-1 z-10 relative"
           />
         </div>
-        <button className="bg-[#474E68] text-white text-2xl font-bold mt-6 px-4 py-4 rounded-xl hover:bg-[#6B728E] w-60">
+        <button className="bg-[#474E68] text-white text-2xl font-bold mt-6 px-4 py-4 rounded-xl hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] hover:bg-[#6B728E] hover:ring ring-[#6B728E] ring-opacity-50 shadow-md w-60 transition duration-300 ease-in-out">
           Hire Me
         </button>
       </motion.div>
